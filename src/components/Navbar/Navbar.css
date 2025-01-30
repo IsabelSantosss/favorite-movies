@@ -1,0 +1,54 @@
+#navbar {
+  padding: 16px;
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 35px;
+  border-bottom: 1px solid #434343dd;
+  position: sticky;
+  top: 0;
+}
+
+#navbar a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+}
+
+#navbar form {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+#navbar form svg {
+  font-size: 18px;
+  color: #c4a3ff;
+}
+
+#navbar svg {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+#navbar .menu {
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+}
+
+#navbar .menu a {
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  padding: 8px 16px;
+  transition: 0.5s;
+  font-size: 16px;
+}
+
+#navbar .menu a:hover {
+  background-color: #242424;
+  color: #ffff;
+}

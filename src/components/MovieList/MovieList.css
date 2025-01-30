@@ -1,0 +1,86 @@
+.movies-list {
+  display: block;
+  width: 100%;
+}
+
+.movies {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 16px;
+  padding-inline-start: 0;
+}
+
+.movie {
+  display: flex;
+  /* height: 230px; */
+  width: 280px;
+  flex-direction: column;
+  background-color: #1a1a1a;
+  color: #fafafa;
+  border-radius: 4px;
+  font-weight: regular;
+  border: 1px solid #242424;
+}
+
+.movie img {
+  width: 280px;
+  margin: 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.movie h3 {
+  text-align: center;
+  font-size: 14px;
+}
+
+.movie .infos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.movie .infos div {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.movie .infos svg {
+  font-size: 24px;
+}
+
+.movie .infos .popularity,
+.movie .infos .releaseDate,
+.movie .infos .voteAverage {
+  height: 30px;
+  align-items: center;
+}
+
+.movie .infos .popularity span,
+.movie .infos .releaseDate span,
+.movie .infos .voteAverage span {
+  font-weight: bold;
+}
+
+.movie .infos .overview {
+  flex-direction: column;
+}
+
+.movie .infos .overview p {
+  margin: 0;
+  text-align: justify;
+}
+
+.movie .infos .overview span {
+  font-weight: bold;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+ 
