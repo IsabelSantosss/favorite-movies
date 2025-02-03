@@ -1,4 +1,4 @@
-import { GetResponse } from './../interfaces/GetResponse';
+import { GetResponse } from '../../interfaces/GetResponse';
 import { toCamel } from 'convert-keys';
 
 export const camelcaseKeys = (obj: any, config: any = null): any => {

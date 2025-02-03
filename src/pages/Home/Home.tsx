@@ -1,37 +1,29 @@
-import { useEffect, useState } from "react";
-import "./Home.css";
-import { GetResponse } from "../../interfaces/GetResponse";
-import { Movie } from "../../interfaces/Movie";
-import { convertResponse } from "../../@types/SnakeCaseKey";
+import { useEffect } from "react";
+import "./Home.css"; 
 import MovieList from "../../components/MovieList/MovieList";
+import { getTopRatedMoviesByLanguage } from "../../redux-store/slices/moviesSlice";
+import { useSelector } from "react-redux"; 
+import { RootState, useAppDispatch } from "../../store";  
 
-const moviesURL = import.meta.env.VITE_API;
-const apiKey = import.meta.env.VITE_API_KEY;
+const Home = () => { 
+  const movies = useSelector((state: RootState) => state.movies.movies);
+  const dispatch = useAppDispatch();
 
-const Home = () => {
-  const [topMovies, setTopMovies] = useState<Movie[]>([]);
-
-  const getTopRatedMovies = async (url: string) => {
-    const res = await fetch(url);
-
-    await res.json().then((response) => {
-      setTopMovies(convertResponse(response as GetResponse<Movie>));
-    });
-  };
-
+  const language: string = "pt-BR";
+ 
   useEffect(() => {
-    const topRatedUrl = `${moviesURL}top_rated?${apiKey}`;
-
-    console.log(topRatedUrl);
-
-    getTopRatedMovies(topRatedUrl);
-  }, []);
+    dispatch(getTopRatedMoviesByLanguage(language)); 
+  }, [dispatch]);
 
   return (
-    <div className="container">
-      <h2 className="title">Filmes mais bem avaliados:</h2>
 
-      <MovieList movies={topMovies}/> 
+    <div className="container"> 
+      {movies.length > 0 && (
+        <>
+          <h2 className="title">Filmes mais bem avaliados:</h2>
+          <MovieList movies={movies} />{" "} 
+        </>
+      )}
     </div>
   );
 };
