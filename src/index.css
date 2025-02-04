@@ -1,36 +1,37 @@
-@font-face {
-  font-family: "BlinkMacSystemFont";
-  src: local("BlinkMacSystemFontLight")
-  url("/fonts/BlinkMacSystemFontLight.ttf") format("truetype");
-  font-weight: 300;
-}
+/* @font-face {
+  font-family: 'NeueHaasDisplay';
+  src: url(../fonts/NeueHaasDisplayRoman.ttf) format('truetype'); font-weight: 400,
+       url(../fonts/NeueHaasDisplayBold.ttf) format('truetype'); font-weight: 800,
+       url(../fonts/NeueHaasDisplayThin.ttf) format('truetype'); font-weight: 300;
+} */
 
 @font-face {
-  font-family: "BlinkMacSystemFont";
-  src: local("BlinkMacSystemFontRegular")
-  url("/fonts/BlinkMacSystemFontRegular.ttf") format("truetype");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "BlinkMacSystemFont";
-  src: local("BlinkMacSystemFontBold"),
-  url("/fonts/BlinkMacSystemFontBold.ttf") format("truetype");
-  font-weight: 900; 
-}
-
-@font-face {
-  font-family: "BlinkMacSystemFont";
-  src: local("BlinkMacSystemFontMedium"), url("/fonts/BlinkMacSystemFontMedium.ttf") format("truetype");
-  font-weight: 500; 
+  font-family: "NeueHaasDisplay";
+  src: url("/fonts/NeueHaasDisplay-Mediu.woff2") format("truetype"); 
+  font-weight: 500;
+  font-style: normal; 
 } 
 
+@font-face {
+  font-family: "NeueHaasDisplay";
+  src: url("/fonts/NeueHaasDisplay-Roman.woff2") format("truetype"); 
+  font-weight: 400;
+  font-style: normal; 
+} 
+
+@font-face {
+  font-family: "NeueHaasDisplay";
+  src: url("/fonts/NeueHaasDisplay-Bold.woff2") format("truetype"); 
+  font-weight: 800;
+  font-style: bold; 
+} 
+ 
 body {
-  font-family: BlinkMacSystemFont;
+  font-family: NeueHaasDisplay, Inter, Outfit, Figtree;
   box-sizing: border-box;
-  line-height: 1.5;
-  font-weight: 300;
-  letter-spacing: 0.5;
+  line-height: 1.5; 
+  font-size: 0.875rem; 
+  font-weight: normal;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

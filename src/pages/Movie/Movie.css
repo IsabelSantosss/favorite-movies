@@ -1,0 +1,77 @@
+.movie-details {
+  display: grid;
+  grid-template-columns: minmax(0, 80%) minmax(0, 20%);
+  grid-gap: 16px;
+  padding: 16px 36px;
+}
+
+.movie-details .first-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-details .second-column {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+}
+
+.movie-details .second-column .content .review {
+  display: grid;
+  grid-template-rows: minmax(0, 100px) minmax(0, 230px);
+  grid-gap: 8px;
+  grid-template-columns: minmax(0, 1fr);
+  border-bottom: 1px solid #3f3f45;
+}
+
+.movie-details .second-column .content .review .first-row {
+  display: flex;
+  gap: 16px; 
+  align-items: center;
+}
+
+.movie-details .second-column .content .review .first-row .infos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.movie-details .second-column .content .review .second-row {
+  display: flex;
+  height: 200px;
+  overflow-y: scroll;
+  padding-right: 16px;
+}
+
+.movie-details .second-column .content .review .first-row .avatar,
+.movie-details .second-column .content .review .first-row .title {
+  margin: 0;
+}
+
+.movie-details .second-column .content .review .avatar {
+  border: 1px solid #c1c1c1;
+  border: 1px solid #424252;
+  background: #09090b;
+  width: 4em;
+  border-radius: 50%;
+  padding: 10px;
+  height: 4em;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.movie-details .second-column .content .review .avatar svg {
+  font-size: 3.5em;
+}
+.movie-details .second-column .content .review .avatar img {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+}

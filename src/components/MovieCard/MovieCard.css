@@ -1,0 +1,76 @@
+.movie-card {
+  display: flex;
+  width: 450px;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #111111;
+  border-radius: 4px;
+  border: 1px solid #27272a;
+  margin-bottom: 24px;
+}
+
+.movie-card img {
+  margin: 0 0 16px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.movie-card h3,
+.movie-card p {
+  text-align: center;
+  font-size: 16px;
+  margin: 0;
+}
+
+.movie-card .infos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 16px;
+}
+
+.movie-card .infos div {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.movie-card .infos svg {
+  font-size: 24px;
+}
+ 
+.movie-card .infos .releaseDate,
+.movie-card .infos .voteAverage {
+  height: 30px;
+  align-items: center;
+}
+ 
+.movie-card .infos .releaseDate span,
+.movie-card .infos .voteAverage span {
+  font-weight: bold;
+}
+
+.movie-card .infos .overview {
+  flex-direction: column;
+}
+
+.movie-card .infos .overview p {
+  margin: 0;
+  text-align: justify;
+}
+
+.movie-card .infos .overview span {
+  font-weight: bold;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.movie-card .footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0 16px 16px 0;
+}

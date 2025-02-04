@@ -15,8 +15,7 @@ const Home = () => {
     dispatch(getTopRatedMoviesByLanguage(language)); 
   }, [dispatch]);
 
-  return (
-
+  return ( 
     <div className="container"> 
       {movies.length > 0 && (
         <>
