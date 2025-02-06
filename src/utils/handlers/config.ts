@@ -15,7 +15,7 @@ export const requestConfig = (method: string, data: any) => {
             config = {
                   ...config,
                   body: JSON.stringify(data)
-            }
+            } 
       }
 
       return config;

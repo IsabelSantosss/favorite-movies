@@ -64,6 +64,16 @@ export const getMovieReviews = createAsyncThunk(
 	}
 );
 
+// Add rating to movie
+export const addRatingToMovie = createAsyncThunk(
+	"movies/addRatingToMovie",
+	async (value: { movieId: string, ratingValue: { [key: string]: number } }) => {
+		const data = await moviesService.addRatingToMovie(value);
+  
+		return data;
+	}
+);
+
 
 export const moviesSlice = createSlice({
 	name: 'movies',

@@ -1,14 +1,16 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./Movie.css";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../store";
 import { useEffect } from "react";
 import {
+  addRatingToMovie,
   getMovieById,
   getMovieReviews,
-} from "../../redux-store/slices/moviesSlice";
-import { FcReadingEbook } from "react-icons/fc";
+} from "../../store/slices/moviesSlice";
+import { FcBullish, FcRating, FcReadingEbook } from "react-icons/fc";
 import { toLocale } from "../../utils/toLocale";
+import { FaRegStar, FaStar } from "react-icons/fa";
 
 const imageURL = import.meta.env.VITE_IMG;
 
@@ -27,6 +29,11 @@ const Movie = () => {
     dispatch(getMovieReviews(id as string));
   }, [id]);
 
+  const rateMovie = (ratingValue: number) => {
+    const value = { movieId: id, ratingValue: { value: ratingValue } };
+    dispatch(addRatingToMovie(value as any));
+  };
+
   console.log(movieDetail);
 
   return (
@@ -35,57 +42,94 @@ const Movie = () => {
         <>
           <div className="first-column">
             <div className="content">
-              <img
-                src={`${imageURL}${movieDetail?.posterPath}`}
-                alt={movieDetail?.originalTitle}
-              />
-              <div className="title">
-                <h2> {movieDetail?.originalTitle} </h2>
-                <p> {movieDetail?.tagline} </p>
+              <div className="movie">
+                <div className="first-row">
+                  <div className="title">
+                    <h2> {movieDetail?.title} </h2>
+                    <p> Título original: {movieDetail?.originalTitle} </p>
+                  </div>
+
+                  <div className="extra-infos">
+                    <div className="average">
+                      <span>Avaliação</span>
+                      <p>
+                        <FaStar className="star" />
+                        {movieDetail.voteAverage}
+                      </p>
+                    </div>
+
+                    <div className="rate">
+                      <span>Sua avaliação</span>
+                      <p>
+                        <FaRegStar
+                          onClick={() => rateMovie(9)}
+                          className="star"
+                        />
+                        Avaliar
+                      </p>
+                    </div>
+
+                    <div className="popularity">
+                      <span>Popularidade</span>
+                      <p>
+                        <FcBullish />
+                        {movieDetail.popularity}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="second-row">
+                  <img
+                    src={`${imageURL}${movieDetail?.posterPath}`}
+                    alt={movieDetail?.originalTitle}
+                  />
+
+                  <div className="infos">
+                    <div className="overview">
+                      <p> {movieDetail?.overview}</p>
+                    </div>
+
+                    <div className="imdb">
+                      <button>
+                        <a
+                          target="_blank"
+                          href={`https://www.imdb.com/pt/title/${movieDetail.imdbId}/`}
+                        >
+                          Visitar no IMDB{" "}
+                        </a>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div className="infos">
-                <div className="overview">
-                  <h3>Sinopse</h3>
-                  <p> {movieDetail?.overview}</p>
-                </div>
+              <div className="reviews">
+                <h3>Reviews</h3>
+                {movieReviews?.length > 0 &&
+                  movieReviews?.map((review) => (
+                    <div className="review" key={review.author}>
+                      <div className="first-row">
+                        <div className="avatar">
+                          <FcReadingEbook />
+                        </div>
+                        <div className="infos">
+                          <h3 className="title">@{review?.author}</h3>
+                          <span className="subtitle">{review?.createdAt}</span>
+                        </div>
+                      </div>
 
-                <div className="status">
-                  <h3>Data de lançamento</h3>
-                  <p> {toLocale(movieDetail?.releaseDate)} </p>
-                </div>
+                      <div className="second-row">
+                        <span>{review?.content}</span>
+                      </div>
+                    </div>
+                  ))}
               </div>
             </div>
           </div>
-          <div className="second-column">
-            <div className="content">
-              <h3>Reviews</h3>
-              {movieReviews?.length > 0 &&
-                movieReviews?.map((review) => (
-                  <div className="review" key={review.author}>
-                    <div className="first-row">
-                      <div className="avatar">
-                        {review.authorDetails.avatarPath ? (
-                          <img
-                            src={`${imageURL}${review?.authorDetails.avatarPath}`}
-                            alt={review?.authorDetails.name}
-                          />
-                        ) : (
-                          <FcReadingEbook />
-                        )}
-                      </div>
-                      <div className="infos">
-                        <h3 className="title">@{review?.author}</h3>
-                        <span className="subtitle">{review?.createdAt}</span>
-                      </div>
-                    </div>
 
-                    <div className="second-row">
-                      <span>{review?.content}</span>
-                    </div>
-                  </div>
-                ))}
-            </div>
+          <div className="second-column">
+            <div className="content"></div>
           </div>
         </>
       )}

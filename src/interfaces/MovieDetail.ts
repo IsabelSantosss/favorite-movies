@@ -3,6 +3,7 @@ export interface MovieDetails {
       id: number;
       imdbId: string;
       tagline: string;
+      title: string;
       originalTitle: string;
       originalLanguage: string;
       originCountry: string[];
@@ -12,4 +13,6 @@ export interface MovieDetails {
       productionCompanies: { id: number, logoPath: string, name: string, originCountry: string }[];
       releaseDate: string;
       spokenLanguage: { [key: string]: string }[];
+      voteCount: number;
+      voteAverage: number;
 }

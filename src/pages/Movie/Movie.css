@@ -1,25 +1,107 @@
 .movie-details {
   display: grid;
-  grid-template-columns: minmax(0, 80%) minmax(0, 20%);
+  grid-template-columns: minmax(0, 60%) minmax(0, 25%);
   grid-gap: 16px;
-  padding: 16px 36px;
+  padding: 56px;
+  justify-content: center;
 }
 
 .movie-details .first-column {
+  border-right: 1px solid #3f3f45;
+  padding-right: 24px;
+}
+
+.movie-details .first-column .content .movie {
   display: flex;
   flex-direction: column;
   gap: 16px;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid #3f3f45;
+  padding-bottom: 16px;
 }
 
-.movie-details .second-column {
+.movie-details .first-column .content .movie .first-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.movie-details .first-column .content .movie .first-row .title {
   display: flex;
   flex-direction: column;
-  text-align: justify;
 }
 
-.movie-details .second-column .content .review {
+.movie-details .first-column .content .movie .first-row .title h2 {
+  font-size: 2em;
+}
+
+.movie-details .first-column .content .movie .first-row .title p {
+  font-weight: 500;
+}
+
+.movie-details .first-column .content .movie .first-row .extra-infos {
+  display: flex;
+  gap: 16px;
+}
+
+.movie-details
+  .first-column
+  .content
+  .movie
+  .first-row
+  .extra-infos
+  .popularity {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-details .first-column .content .movie .first-row .extra-infos span {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.movie-details .first-column .content .movie .first-row .extra-infos p {
+  display: flex;
+  gap: 8px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.movie-details .first-column .content .movie .first-row .extra-infos svg {
+  font-size: 1.3em;
+}
+
+.movie-details .first-column .content .movie .first-row .extra-infos .star {
+  color: #f5c518;
+}
+
+.movie-details
+  .first-column
+  .content
+  .movie
+  .first-row
+  .extra-infos
+  .rate
+  .star {
+  cursor: pointer;
+}
+
+.movie-details .first-column .content .movie .infos .imdb {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.movie-details .first-column .content .movie .second-row {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 16px;
+  gap: 16px;
+}
+
+.movie-details .first-column .content .review {
   display: grid;
   grid-template-rows: minmax(0, 100px) minmax(0, 230px);
   grid-gap: 8px;
@@ -27,32 +109,32 @@
   border-bottom: 1px solid #3f3f45;
 }
 
-.movie-details .second-column .content .review .first-row {
+.movie-details .first-column .content .review .first-row {
   display: flex;
-  gap: 16px; 
+  gap: 16px;
   align-items: center;
 }
 
-.movie-details .second-column .content .review .first-row .infos {
+.movie-details .first-column .content .review .first-row .infos {
   display: flex;
   flex-direction: column;
   gap: 16px;
   justify-content: center;
 }
 
-.movie-details .second-column .content .review .second-row {
+.movie-details .first-column .content .review .second-row {
   display: flex;
   height: 200px;
   overflow-y: scroll;
   padding-right: 16px;
 }
 
-.movie-details .second-column .content .review .first-row .avatar,
-.movie-details .second-column .content .review .first-row .title {
+.movie-details .first-column .content .review .first-row .avatar,
+.movie-details .first-column .content .review .first-row .title {
   margin: 0;
 }
 
-.movie-details .second-column .content .review .avatar {
+.movie-details .first-column .content .review .avatar {
   border: 1px solid #c1c1c1;
   border: 1px solid #424252;
   background: #09090b;
@@ -67,11 +149,27 @@
   text-align: center;
 }
 
-.movie-details .second-column .content .review .avatar svg {
+.movie-details .first-column .content .review .avatar svg {
   font-size: 3.5em;
 }
-.movie-details .second-column .content .review .avatar img {
+.movie-details .first-column .content .review .avatar img {
   width: 5em;
   height: 5em;
   border-radius: 50%;
+}
+
+.movie-details .second-column .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2,
+p {
+  margin: 0;
+}
+
+img {
+  max-width: 40%;
 }

@@ -28,7 +28,7 @@ export const getMovieById = async (movieId: string): Promise<MovieDetails | any>
       const config = requestConfig('GET', null);
 
       try {
-            const url = `${apiUrl}/movie/${movieId}`;
+            const url = `${apiUrl}/movie/${movieId}?language=pt-BR`;
 
             const res = await fetch(url, config)
                   .then((res) => res.json())
@@ -46,7 +46,7 @@ export const getMovieReviews = async (movieId: string): Promise<MovieReviews[] |
       const config = requestConfig('GET', null);
 
       try {
-            const url = `${apiUrl}/movie/${movieId}/reviews`;
+            const url = `${apiUrl}/movie/${movieId}/reviews?language=pt-BR`;
 
             const res = await fetch(url, config)
                   .then((res) => res.json())
@@ -55,6 +55,20 @@ export const getMovieReviews = async (movieId: string): Promise<MovieReviews[] |
             return convertGetAllResponse(res as GetAllResponseType<MovieReviews>);
       } catch (error) {
             return error;
+      } 
+}
+
+export const addRatingToMovie = async (value: { movieId: string, ratingValue: { [key: string]: number } }): Promise<void> => { 
+      const config = requestConfig('POST', value.ratingValue);
+
+      try {
+            const url = `${apiUrl}/movie/${value.movieId}/rating`; 
+
+            const res = await fetch(url, config)
+                  .then((res) => res.json())
+                  .catch((err) => err); 
+      } catch (error) {
+            console.log(error);
       }
 
 }
@@ -62,7 +76,8 @@ export const getMovieReviews = async (movieId: string): Promise<MovieReviews[] |
 export const moviesService = {
       getTopRatedMoviesByLanguage,
       getMovieById,
-      getMovieReviews
+      getMovieReviews,
+      addRatingToMovie
 };
 
 export default moviesService;

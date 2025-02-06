@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./Home.css"; 
 import MovieList from "../../components/MovieList/MovieList";
-import { getTopRatedMoviesByLanguage } from "../../redux-store/slices/moviesSlice";
+import { getTopRatedMoviesByLanguage } from "../../store/slices/moviesSlice";
 import { useSelector } from "react-redux"; 
 import { RootState, useAppDispatch } from "../../store";  
 
