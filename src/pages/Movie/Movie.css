@@ -1,17 +1,14 @@
 .movie-details {
   display: grid;
-  grid-template-columns: minmax(0, 60%) minmax(0, 25%);
-  grid-gap: 16px;
+  flex-direction: column;
+  gap: 16px;
   padding: 56px;
   justify-content: center;
+  grid-template-columns: minmax(0, 80%);
+  grid-template-rows: minmax(0, auto) minmax(0, 1fr);
 }
 
-.movie-details .first-column {
-  border-right: 1px solid #3f3f45;
-  padding-right: 24px;
-}
-
-.movie-details .first-column .content .movie {
+.movie-details .header .content {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -21,84 +18,93 @@
   padding-bottom: 16px;
 }
 
-.movie-details .first-column .content .movie .first-row {
+.movie-details .header .content .first-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.movie-details .first-column .content .movie .first-row .title {
+.movie-details .header .content .first-row .title {
   display: flex;
   flex-direction: column;
 }
 
-.movie-details .first-column .content .movie .first-row .title h2 {
+.movie-details .header .content .first-row .title h2 {
   font-size: 2em;
 }
 
-.movie-details .first-column .content .movie .first-row .title p {
+.movie-details .header .content .title p {
   font-weight: 500;
 }
 
-.movie-details .first-column .content .movie .first-row .extra-infos {
+.movie-details .header .content .extra-infos {
   display: flex;
   gap: 16px;
 }
 
-.movie-details
-  .first-column
-  .content
-  .movie
-  .first-row
-  .extra-infos
-  .popularity {
+.movie-details .header .content .first-row .extra-infos .popularity {
   display: flex;
   flex-direction: column;
 }
 
-.movie-details .first-column .content .movie .first-row .extra-infos span {
+.movie-details .header .content .first-row .extra-infos span {
   font-weight: bold;
   font-size: 1.2em;
 }
 
-.movie-details .first-column .content .movie .first-row .extra-infos p {
+.movie-details .header .content .first-row .extra-infos p {
   display: flex;
   gap: 8px;
   font-size: 1.1em;
   font-weight: bold;
 }
 
-.movie-details .first-column .content .movie .first-row .extra-infos svg {
+.movie-details .header .content .first-row .extra-infos svg {
   font-size: 1.3em;
 }
 
-.movie-details .first-column .content .movie .first-row .extra-infos .star {
+.movie-details .header .content .first-row .extra-infos .star {
   color: #f5c518;
 }
 
-.movie-details
-  .first-column
-  .content
-  .movie
-  .first-row
-  .extra-infos
-  .rate
-  .star {
+.movie-details .header .content .first-row .extra-infos .rate .star {
   cursor: pointer;
 }
 
-.movie-details .first-column .content .movie .infos .imdb {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.movie-details .first-column .content .movie .second-row {
-  display: flex;
-  align-items: center;
+.movie-details .header .content .second-row {
+  display: flex; 
   flex-direction: column;
   margin-top: 16px;
+  gap: 28px;
+  width: 100%;
+}
+
+.movie-details .header .content .second-row .images {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: minmax(0, auto) minmax(0, auto);
+  grid-template-rows: minmax(0, auto) minmax(0, auto); 
+}
+
+.movie-details .header .content .second-row .genres {
+  display: flex;
   gap: 16px;
+}
+
+.movie-details .header .content .second-row .genres .genre-tag {
+  padding: 4px 16px;
+  border: 1px solid #3f3f45;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 1em;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.movie-details .header .content .second-row .genres .genre-tag:hover {
+  background-color: #c4a3ff;
+  color: #3f3f45;
 }
 
 .movie-details .first-column .content .review {
@@ -168,8 +174,9 @@
 h2,
 p {
   margin: 0;
-}
+} 
 
 img {
-  max-width: 40%;
+  height: 100%;
+  width: 100%;
 }

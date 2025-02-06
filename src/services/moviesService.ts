@@ -4,6 +4,7 @@ import { Movie } from "../interfaces/Movie";
 import { requestConfig } from "../utils/handlers/config";
 import { MovieDetails } from "@/interfaces/MovieDetail";
 import { MovieReviews } from "@/interfaces/MovieReviews";
+import { MovieImage } from "@/interfaces/MovieImages";
 
 export const apiUrl = import.meta.env.VITE_API;
 
@@ -33,8 +34,7 @@ export const getMovieById = async (movieId: string): Promise<MovieDetails | any>
             const res = await fetch(url, config)
                   .then((res) => res.json())
                   .catch((err) => err);
-
-            console.log('resposta ', convertResponse(res as MovieDetails))
+ 
             return convertResponse(res as MovieDetails);
       } catch (error) {
             return error;
@@ -72,12 +72,29 @@ export const addRatingToMovie = async (value: { movieId: string, ratingValue: { 
       }
 
 }
+ 
+export const getMovieImages = async (movieId: string): Promise<MovieImage | any> => {
+      const config = requestConfig('GET', null);
+
+      try {
+            const url = `${apiUrl}/movie/${movieId}/images`;
+            
+            const res = await fetch(url, config)
+                  .then((res) => res.json())
+                  .catch((err) => err);
+
+            return convertResponse(res as MovieImage);
+      } catch (error) {
+            return error;
+      } 
+}
 
 export const moviesService = {
       getTopRatedMoviesByLanguage,
       getMovieById,
       getMovieReviews,
-      addRatingToMovie
+      addRatingToMovie,
+      getMovieImages
 };
 
 export default moviesService;

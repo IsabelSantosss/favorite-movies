@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./Movie.css";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../store";
@@ -7,8 +7,9 @@ import {
   addRatingToMovie,
   getMovieById,
   getMovieReviews,
+  getMovieImages,
 } from "../../store/slices/moviesSlice";
-import { FcBullish, FcRating, FcReadingEbook } from "react-icons/fc";
+import { FcBullish, FcReadingEbook } from "react-icons/fc";
 import { toLocale } from "../../utils/toLocale";
 import { FaRegStar, FaStar } from "react-icons/fa";
 
@@ -22,11 +23,15 @@ const Movie = () => {
   const movieReviews = useSelector(
     (state: RootState) => state.movies.movieReviews
   );
+  const movieImages = useSelector(
+    (state: RootState) => state.movies.movieImages.backdrops
+  );
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getMovieById(id as string));
     dispatch(getMovieReviews(id as string));
+    dispatch(getMovieImages(id as string));
   }, [id]);
 
   const rateMovie = (ratingValue: number) => {
@@ -40,9 +45,87 @@ const Movie = () => {
     <div className="movie-details">
       {movieDetail && (
         <>
+          <div className="header">
+            <div className="content">
+              <div className="first-row">
+                <div className="title">
+                  <h2> {movieDetail?.title} </h2>
+                  <p> Título original: {movieDetail?.originalTitle} </p>
+                  <p> {toLocale(movieDetail?.releaseDate)} </p>
+                </div>
+
+                <div className="extra-infos">
+                  <div className="average">
+                    <span>Avaliação</span>
+                    <p>
+                      <FaStar className="star" />
+                      {movieDetail.voteAverage}
+                    </p>
+                  </div>
+
+                  <div className="rate">
+                    <span>Sua avaliação</span>
+                    <p>
+                      <FaRegStar
+                        onClick={() => rateMovie(9)}
+                        className="star"
+                      />
+                      Avaliar
+                    </p>
+                  </div>
+
+                  <div className="popularity">
+                    <span>Popularidade</span>
+                    <p>
+                      <FcBullish />
+                      {movieDetail.popularity}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="second-row">
+                <div className="images">
+                  {movieImages?.length > 0 &&
+                    movieImages
+                      .slice(0, 4)
+                      .map((backdrop) => (
+                        <img
+                          src={`${imageURL}${backdrop?.filePath}`}
+                          key={backdrop.filePath}
+                        />
+                      ))}
+                </div>
+
+                <div className="genres">
+                  {movieDetail.genres &&
+                    movieDetail.genres.map((genre) => (
+                      <div className="genre-tag" key={genre.id}>
+                        <span>{genre.name}</span>
+                      </div>
+                    ))}
+                  {/* <div className="overview">
+                      <p> {movieDetail?.overview}</p>
+                    </div> */}
+                  {/* 
+                  <div className="imdb">
+                    <button>
+                      <a
+                        target="_blank"
+                        href={`https://www.imdb.com/pt/title/${movieDetail.imdbId}/`}
+                      >
+                        Visitar no IMDB{" "}
+                      </a>
+                    </button>
+                  </div> */}
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="first-column">
             <div className="content">
-              <div className="movie">
+              {/* <div className="movie">
                 <div className="first-row">
                   <div className="title">
                     <h2> {movieDetail?.title} </h2>
@@ -102,7 +185,7 @@ const Movie = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               <div className="reviews">
                 <h3>Reviews</h3>
