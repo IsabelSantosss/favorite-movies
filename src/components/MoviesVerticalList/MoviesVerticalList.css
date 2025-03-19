@@ -1,0 +1,16 @@
+.movies-vertical-list {
+  display: block;
+  width: 100%;
+}
+
+.movies-vertical-list .movies {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.movies-vertical-list .movies .movie {
+  flex: 0 auto;
+}

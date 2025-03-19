@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
@@ -6,11 +5,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home.tsx";
 import Search from "./pages/Search/Search.tsx";
 import Movie from "./pages/Movie/Movie.tsx";
-import { Provider } from "react-redux"; 
+import { Provider } from "react-redux";
 import { store } from "./store.ts";
-  
+import { theme } from "./theme.ts";
+import { ThemeProvider } from "@mui/material";
+
 createRoot(document.getElementById("root")!).render(
-  // <StrictMode> 
+  // <StrictMode>
+  <ThemeProvider theme={theme}>
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
@@ -21,6 +23,7 @@ createRoot(document.getElementById("root")!).render(
           </Route>
         </Routes>
       </BrowserRouter>
-    </Provider> 
+    </Provider>
+  </ThemeProvider>
   // </StrictMode>
 );

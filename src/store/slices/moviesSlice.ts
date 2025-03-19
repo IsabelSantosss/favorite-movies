@@ -12,6 +12,7 @@ export interface MoviesSliceState {
 	movieDetail?: MovieDetails;
 	movieReviews: MovieReviews[];
 	movieImages: MovieImage;
+	upcomingMovies: Movie[];
 };
 
 const initialState: MoviesSliceState = {
@@ -19,7 +20,8 @@ const initialState: MoviesSliceState = {
 	errorMessage: '',
 	movies: [],
 	movieReviews: [],
-	movieImages: { backdrops: [] }
+	movieImages: { backdrops: [] },
+	upcomingMovies: []
 }
 
 // Get top rated movies by language
@@ -92,6 +94,26 @@ export const getMovieImages = createAsyncThunk(
 	}
 );
 
+// Get upcoming movies
+export const getUpcomingMovies = createAsyncThunk(
+	"movies/getRecommendedMovies",
+	async () => {
+		const data = await moviesService.getUpcomingMovies();
+  
+		return data;
+	}
+);
+
+// Get filtered movies
+export const getFilteredMovies = createAsyncThunk(
+	"movies/getFilteredMovies",
+	async (query: string) => {
+		const data = await moviesService.getFilteredMovies(query);
+  
+		return data;
+	}
+);
+
 
 export const moviesSlice = createSlice({
 	name: 'movies',
@@ -140,6 +162,17 @@ export const moviesSlice = createSlice({
 					state.isLoading = false
 			})
 			.addCase(getMovieImages.rejected, (state) => {
+				state.isLoading = false,
+					state.errorMessage = 'deu erro'
+			})
+			.addCase(getUpcomingMovies.pending, (state) => {
+				state.isLoading = true
+			})
+			.addCase(getUpcomingMovies.fulfilled, (state, action) => {
+				state.upcomingMovies = action.payload,
+					state.isLoading = false
+			})
+			.addCase(getUpcomingMovies.rejected, (state) => {
 				state.isLoading = false,
 					state.errorMessage = 'deu erro'
 			})

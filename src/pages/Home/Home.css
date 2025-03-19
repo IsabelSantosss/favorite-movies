@@ -4,7 +4,22 @@
   width: auto;
   flex-direction: column;
   gap: 28px;
-  grid-template-columns: minmax(0, 85%);
-  grid-template-rows: minmax(0, auto) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 80%) minmax(0, 20%);
   justify-content: center;
+}
+
+.upcoming {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.movies-upcoming {
+  background: linear-gradient(
+    0deg,
+    transparent 0%,
+    transparent 50%,
+    rgba(var(--ipt-baseAlt-shade3-rgb, 18, 18, 18), 0.7) 78%,
+    rgba(var(--ipt-baseAlt-shade3-rgb, 18, 18, 18), 1) 100%
+  );
 }

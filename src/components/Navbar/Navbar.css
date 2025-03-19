@@ -8,11 +8,11 @@
   border-bottom: 1px solid #18181b;
   position: sticky;
   top: 0;
+  z-index: 999;
 }
 
 #navbar a {
-  display: flex;
-  align-items: center;
+  display: flex; 
   gap: 8px;
   font-size: 20px;
 }
@@ -24,12 +24,16 @@
   width: 400px;
 } 
 
-#navbar form svg {
+#navbar svg  {
   font-size: 18px;
   color: #c4a3ff;
 }
 
-#navbar svg {
+#navbar .menu .menu-icon {
+  font-size: 20px;
+}
+
+#navbar .logo-icon {
   font-size: 28px;
   cursor: pointer;
 }

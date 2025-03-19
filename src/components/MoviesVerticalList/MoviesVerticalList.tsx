@@ -1,20 +1,19 @@
 import { Movie } from "../../interfaces/Movie";
-import "./MovieList.css";
-import MovieCard from "../MovieCard/MovieCard";
+import "./MoviesVerticalList.css";
+import MovieHorizontalCard from "../MovieHorizontalCard/MovieHorizontalCard";
 
 interface Props {
   movies: Movie[];
 }
-
-
-const MovieList = ({ movies }: Props) => { 
+ 
+const MoviesVerticalList = ({ movies }: Props) => {  
   return (
-    <main className="movie-list">
+    <main className="movies-vertical-list">
       {movies.length > 0 && (
         <ul className="movies">
           {movies.map((movie) => (
             <li className="movie" key={movie.id}>
-              <MovieCard movie={movie} />
+              <MovieHorizontalCard movie={movie} />
             </li>
           ))}
         </ul>
@@ -23,4 +22,4 @@ const MovieList = ({ movies }: Props) => {
   );
 };
 
-export default MovieList;
+export default MoviesVerticalList;
