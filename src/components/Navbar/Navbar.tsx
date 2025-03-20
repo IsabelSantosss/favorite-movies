@@ -1,23 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { BiSolidCameraMovie } from "react-icons/bi";
 import { FaSearch } from "react-icons/fa";
 import { FaRankingStar } from "react-icons/fa6";
-import { FormEventHandler, useState } from "react";
-import { Button, IconButton } from "@mui/material";
+import { useState } from "react";
 
-type Props = {
-  handleSearch: (query: string) => FormEventHandler<HTMLFormElement>;
-};
-
-const Navbar = ({ handleSearch }: Props) => {
+const Navbar = () => {
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+  
+  const handleSearch = (e: any) => { 
+    e.preventDefault(); 
+		if (search) {
+			return navigate(`/search?q=${search}`);
+		}
+	};
 
   return (
     <nav id="navbar">
       <BiSolidCameraMovie className="logo-icon" />
-      <form >
-        <FaSearch onClick={() => handleSearch(search)}/>
+
+      <form>
+        <FaSearch onClick={handleSearch} />
         <input
           type="text"
           value={search}
@@ -25,6 +29,7 @@ const Navbar = ({ handleSearch }: Props) => {
           placeholder="Pesquisar"
         />
       </form>
+
       <div className="menu">
         <Link to="/movie/1">
           <FaRankingStar className="menu-icon" />

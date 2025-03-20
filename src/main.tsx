@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { store } from "./store.ts";
 import { theme } from "./theme.ts";
 import { ThemeProvider } from "@mui/material";
+import Search from "./pages/Search/Search.tsx";
 
 createRoot(document.getElementById("root")!).render(
   // <StrictMode>
@@ -18,6 +19,7 @@ createRoot(document.getElementById("root")!).render(
           <Route element={<App />}>
             <Route path="/" element={<Home />} />
             <Route path="movie/:id" element={<Movie />} />
+            <Route path="/search" element={<Search />} />
           </Route>
         </Routes>
       </BrowserRouter>
