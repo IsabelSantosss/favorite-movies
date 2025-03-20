@@ -8,12 +8,14 @@ import {
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../store";
 import MoviesHorizontalList from "../../components/MoviesHorizontalList/MoviesHorizontalList";
+import LoadingContent from "../../components/LoadingContent/LoadingContent";
 
 const Home = () => {
-  const movies = useSelector((state: RootState) => state.movies.movies);
-  const upcomingMovies = useSelector((state: RootState) =>
-    state.movies.upcomingMovies.slice(0, 10)
-  );
+  const moviesState = useSelector((state: RootState) => state.movies);
+  const movies = moviesState.movies;
+  const upcomingMovies = moviesState.upcomingMovies.slice(0, 10);
+  const isLoading = moviesState.isLoading;
+
   const dispatch = useAppDispatch();
 
   const language: string = "pt-BR";
@@ -25,16 +27,26 @@ const Home = () => {
 
   return (
     <div className="container">
-      <div className="top-rated">
-        {movies.length > 0 && <MoviesHorizontalList movies={movies} />}
-      </div>
-      <div className="upcoming">
-        <h2 className="title">A seguir</h2>
-
-        <div className="movies-upcoming">
-          {movies.length > 0 && <MoviesVerticalList movies={upcomingMovies} />}
+      {isLoading ? (
+        <div className="loading">
+          <LoadingContent />
         </div>
-      </div>
+      ) : (
+        <div className="content">
+          <div className="top-rated">
+            {movies.length > 0 && <MoviesHorizontalList movies={movies} />}
+          </div>
+          <div className="upcoming">
+            <h2 className="title">A seguir</h2>
+
+            <div className="movies-upcoming">
+              {movies.length > 0 && (
+                <MoviesVerticalList movies={upcomingMovies} />
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

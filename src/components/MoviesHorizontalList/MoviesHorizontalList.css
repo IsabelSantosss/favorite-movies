@@ -1,20 +1,19 @@
-.movies-list {
+.movies-horizontal-list {
   display: block;
   width: 100%;
 }
 
-.movies {
+.movies-horizontal-list .movies {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: start; 
   gap: 8px;
   width: 100%;
-  padding-inline-start: 0;
   margin-block-end: 0;
   margin-block-start: 0;
 }
 
-.movie {
+.movies-horizontal-list .movies .movie {
   flex: 0 auto;
 }

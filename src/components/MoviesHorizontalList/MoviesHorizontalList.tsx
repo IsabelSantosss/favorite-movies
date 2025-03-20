@@ -9,7 +9,7 @@ interface Props {
 
 const MoviesHorizontalList = ({ movies }: Props) => { 
   return (
-    <main className="movie-list">
+    <main className="movies-horizontal-list">
       {movies.length > 0 && (
         <ul className="movies">
           {movies.map((movie) => (

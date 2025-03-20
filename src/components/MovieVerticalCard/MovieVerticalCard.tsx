@@ -20,7 +20,7 @@ const imageURL = import.meta.env.VITE_IMG;
 const MovieVerticalCard = ({ movie }: Props) => { 
 
   return (
-    <Card variant="outlined" sx={{ maxWidth: 345 }} className="movie-card">
+    <Card variant="outlined" sx={{ maxWidth: 305 }} className="movie-card">
       <CardMedia
         component="img"
         sx={{ height: 140 }}

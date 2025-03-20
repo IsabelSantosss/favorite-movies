@@ -176,6 +176,17 @@ export const moviesSlice = createSlice({
 				state.isLoading = false,
 					state.errorMessage = 'deu erro'
 			})
+			.addCase(getFilteredMovies.pending, (state) => {
+				state.isLoading = true
+			})
+			.addCase(getFilteredMovies.fulfilled, (state, action) => {
+				state.movies = action.payload,
+					state.isLoading = false
+			})
+			.addCase(getFilteredMovies.rejected, (state) => {
+				state.isLoading = false,
+					state.errorMessage = 'deu erro'
+			})
 	}
 });
 
